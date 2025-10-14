@@ -28,7 +28,7 @@ int main (int argc, char *argv[])
         c = fgetc(fp);    //继续读取下一个字符
     }
     printf ("\n");
-  
+    
 
     // 关闭文件
     int close_ret = fclose (fp);
