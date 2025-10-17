@@ -16,7 +16,7 @@ int main (int argc,char *argv[]){
         exit(EXIT_FAILURE); 
     }
 
-    char buffer[100];
+    char buffer[100]; // 用于读写的缓冲区
 
     pid_t pid = fork();
     if (pid < 0)
@@ -27,7 +27,6 @@ int main (int argc,char *argv[]){
     else if (pid == 0)
     {
         // Child process    
-        strcpy(buffer, "Hello from child process!\n");
     }else
     {
         // Parent process
@@ -36,5 +35,17 @@ int main (int argc,char *argv[]){
     }
     
     //父子进程都执行的代码
+    ssize_t bytes_write = write(fd, buffer, strlen(buffer));
+    if (bytes_write < 0){
+        perror("Write to file failed");
+        close(fd);
+        exit(EXIT_FAILURE); 
+    }
+
+    if (pid == 0){
+        printf("Child process wrote to file.\n");
+    }else{
+        printf("Parent process wrote to file.\n");
+    }
 
 }
