@@ -4,7 +4,8 @@
 
 int main(int argc, char *argv[])
 {
-    const char *name = "banzhang";
+    //跳转之前
+    char *name = "banzhang";
     printf("我是%s 编号%d，父进程%d，我现在还在一楼\n",
            name, getpid(), getppid());
 
@@ -23,17 +24,15 @@ int main(int argc, char *argv[])
        int execve(const char *__path, char *const __argv[], char *const __envp[])
     */
     char *const args[] = {
-        "/home/banzhang/2-尚硅谷/Process_test/execve_test/a.out",
-        "arg1",
-        "arg2",
+        "/home/s/桌面/Mint/Linux/2-尚硅谷/Process_test/erlou",
+        name,
         NULL
     };
     char *const envp[] = {
-        "MYENV=12345",
-        "TEST=67890",
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
         NULL
     };
-
+  
     /* 执行跳转：成功不返回，失败才继续 */
     if (execve(args[0], args, envp) == -1) {
         perror("execve");
