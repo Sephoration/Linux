@@ -50,3 +50,12 @@ orphan_process_test:orphan_process_test.c
 	-$(CC) -o $@ $^
 	-./$@
 	-rm ./$@
+
+
+fifo_read:fifo_read.c
+	-$(CC) -o $@ $^
+
+
+fifo_write:fifo_write.c
+	-$(CC) -o $@ $^
+
