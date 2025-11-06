@@ -43,7 +43,7 @@ int main (int argc, char const *argv[]){
     {
         write (fd, buf, read_num);
     }
-        
+
     if (read_num < 0 )
     {
         perror("read");
@@ -58,7 +58,7 @@ int main (int argc, char const *argv[]){
     if (unlink(pipe_path) == -1 )
     {
         perror("unlink");
-    } 
+    }
 
 }
 
